@@ -1,0 +1,572 @@
+<!DOCTYPE html>
+<html lang="he" dir="rtl">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>מסמך אפיון — מירבי שפיר</title>
+<link href="https://fonts.googleapis.com/css2?family=Heebo:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
+<style>
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+:root{
+  --brand:#1a3a5c;--accent:#2471a3;--light:#eaf4fb;
+  --green:#145a32;--green-bg:#e9f7ef;
+  --warn:#7d3c0a;--warn-bg:#fdf2e9;
+  --red:#922b21;--red-bg:#fdedec;
+  --gold:#7d6608;--gold-bg:#fefbd8;
+  --text:#1c2833;--muted:#5d6d7e;
+  --border:#d5d8dc;--bg:#f4f6f8;--white:#fff;
+}
+body{font-family:'Heebo',sans-serif;background:var(--bg);color:var(--text);line-height:1.75;font-size:15px}
+.wrap{max-width:860px;margin:0 auto;padding:2rem 1.25rem 5rem}
+
+/* COVER */
+.cover{background:var(--brand);border-radius:16px;padding:3rem 2.5rem;margin-bottom:2rem;position:relative;overflow:hidden}
+.cover::after{content:'';position:absolute;bottom:-80px;left:-80px;width:320px;height:320px;background:rgba(255,255,255,0.03);border-radius:50%}
+.cover-tag{display:inline-block;background:rgba(255,255,255,0.12);color:rgba(255,255,255,0.8);font-size:11px;letter-spacing:2px;text-transform:uppercase;padding:5px 14px;border-radius:20px;margin-bottom:1.25rem}
+.cover h1{font-size:2.1rem;font-weight:900;color:#fff;line-height:1.25;margin-bottom:.5rem}
+.cover .sub{font-size:1rem;color:rgba(255,255,255,0.65);margin-bottom:2rem}
+.cover-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:1rem;border-top:1px solid rgba(255,255,255,0.15);padding-top:1.5rem}
+.cover-item label{display:block;font-size:10px;letter-spacing:1px;text-transform:uppercase;color:rgba(255,255,255,0.45);margin-bottom:3px}
+.cover-item span{font-size:13px;color:rgba(255,255,255,0.88);font-weight:500}
+
+/* SECTIONS */
+.sec{background:var(--white);border-radius:12px;border:1px solid var(--border);padding:2rem 2.25rem;margin-bottom:1.5rem}
+.sec-hd{display:flex;align-items:center;gap:12px;margin-bottom:1.5rem;padding-bottom:1rem;border-bottom:2px solid var(--light)}
+.sec-num{width:36px;height:36px;background:var(--brand);color:#fff;border-radius:50%;display:flex;align-items:center;justify-content:center;font-weight:800;font-size:13px;flex-shrink:0}
+.sec-hd h2{font-size:1.15rem;font-weight:700;color:var(--brand)}
+.sec-hd .sec-tag{margin-right:auto;font-size:11px;font-weight:600;padding:3px 10px;border-radius:20px;background:var(--light);color:var(--accent)}
+
+/* PART DIVIDER */
+.part-div{background:var(--accent);border-radius:12px;padding:1.5rem 2rem;margin:2.5rem 0 1.5rem;text-align:center}
+.part-div h2{font-size:1.3rem;font-weight:800;color:#fff;margin-bottom:.25rem}
+.part-div p{font-size:13px;color:rgba(255,255,255,0.75)}
+
+/* INSIGHT BOXES */
+.insight{border-radius:10px;padding:1.1rem 1.4rem;margin:1rem 0;font-size:14px;line-height:1.8}
+.insight-title{font-weight:700;font-size:13px;letter-spacing:.5px;margin-bottom:.4rem}
+.insight.gold{background:var(--gold-bg);border-right:4px solid #d4ac0d}
+.insight.gold .insight-title{color:var(--gold)}
+.insight.green{background:var(--green-bg);border-right:4px solid #1e8449}
+.insight.green .insight-title{color:var(--green)}
+.insight.warn{background:var(--warn-bg);border-right:4px solid #ca6f1e}
+.insight.warn .insight-title{color:var(--warn)}
+.insight.red{background:var(--red-bg);border-right:4px solid #c0392b}
+.insight.red .insight-title{color:var(--red)}
+.insight.blue{background:var(--light);border-right:4px solid var(--accent)}
+.insight.blue .insight-title{color:var(--accent)}
+
+/* TABLE */
+.t{width:100%;border-collapse:collapse;font-size:13px;margin:1rem 0}
+.t th{background:var(--brand);color:#fff;padding:9px 13px;text-align:right;font-weight:600;font-size:12px}
+.t td{padding:8px 13px;border-bottom:1px solid var(--border);vertical-align:top}
+.t tr:nth-child(even) td{background:var(--bg)}
+.t tr:hover td{background:var(--light)}
+
+/* FLOW */
+.flow{display:flex;align-items:center;flex-wrap:wrap;gap:8px;margin:1.25rem 0}
+.fstep{background:var(--light);border:2px solid var(--accent);border-radius:10px;padding:10px 14px;font-size:12px;font-weight:600;color:var(--brand);text-align:center;min-width:90px}
+.fstep.new{background:var(--green-bg);border-color:#1e8449;color:var(--green)}
+.fstep.warn{background:var(--warn-bg);border-color:#ca6f1e;color:var(--warn)}
+.farrow{color:var(--accent);font-size:18px;font-weight:700}
+
+/* BEFORE AFTER */
+.ba-grid{display:grid;grid-template-columns:1fr 1fr;gap:1rem;margin:1rem 0}
+.ba-card{border-radius:10px;padding:1.1rem;font-size:13px}
+.ba-card.before{background:var(--red-bg);border:1px solid #f1948a}
+.ba-card.after{background:var(--green-bg);border:1px solid #82e0aa}
+.ba-card h4{font-weight:700;font-size:12px;letter-spacing:.5px;text-transform:uppercase;margin-bottom:.75rem}
+.ba-card.before h4{color:var(--red)}
+.ba-card.after h4{color:var(--green)}
+.ba-card li{margin:5px 0;padding-right:.5rem}
+
+/* STEP LIST */
+.steps{counter-reset:steps;list-style:none;margin:1rem 0}
+.steps li{counter-increment:steps;display:flex;gap:14px;padding:12px 0;border-bottom:1px solid var(--border)}
+.steps li:last-child{border-bottom:none}
+.steps li::before{content:counter(steps);background:var(--accent);color:#fff;border-radius:50%;width:26px;height:26px;display:flex;align-items:center;justify-content:center;font-size:12px;font-weight:700;flex-shrink:0;margin-top:2px}
+.step-content h4{font-size:14px;font-weight:700;color:var(--brand);margin-bottom:3px}
+.step-content p{font-size:13px;color:var(--muted)}
+
+/* FIELD LIST */
+.field-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:8px;margin:1rem 0}
+.field-item{background:var(--bg);border-radius:8px;padding:8px 12px;font-size:12px}
+.field-item .field-name{font-weight:600;color:var(--brand);margin-bottom:2px}
+.field-item .field-src{color:var(--muted);font-size:11px}
+
+/* PAIN SCORE */
+.pain-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:1rem;margin:1rem 0}
+.pain-card{background:var(--bg);border-radius:10px;padding:1rem;text-align:center}
+.pain-card .pain-num{font-size:2rem;font-weight:900;color:var(--brand)}
+.pain-card .pain-label{font-size:11px;color:var(--muted);margin-top:4px}
+
+/* UL */
+ul.clean{padding-right:1.25rem;margin:.5rem 0}
+ul.clean li{margin:5px 0;font-size:14px}
+ul.clean li::marker{color:var(--accent)}
+p.body{font-size:14px;margin:.6rem 0;color:var(--text)}
+
+/* RECC */
+.recc{display:flex;gap:12px;padding:12px 0;border-bottom:1px solid var(--border)}
+.recc:last-child{border-bottom:none}
+.recc-num{background:var(--gold-bg);color:var(--gold);border-radius:8px;width:32px;height:32px;display:flex;align-items:center;justify-content:center;font-weight:800;font-size:13px;flex-shrink:0}
+.recc-body h4{font-size:14px;font-weight:700;color:var(--brand);margin-bottom:3px}
+.recc-body p{font-size:13px;color:var(--muted)}
+
+/* FOOTER */
+.footer{text-align:center;padding:2rem;color:var(--muted);font-size:12px;border-top:1px solid var(--border);margin-top:2rem}
+</style>
+</head>
+<body>
+<div class="wrap">
+
+<!-- COVER -->
+<div class="cover">
+  <div class="cover-tag">מסמך אפיון | AP Automations</div>
+  <h1>אוטומציה לתהליכי<br>חקירת ביטוח</h1>
+  <p class="sub">משרד מירבי שפיר — חקירות ביטוח ונזיקין</p>
+  <div class="cover-grid">
+    <div class="cover-item"><label>לקוח</label><span>הראל מירויס</span></div>
+    <div class="cover-item"><label>הוכן על ידי</label><span>AP Automations</span></div>
+    <div class="cover-item"><label>תאריך</label><span id="dt"></span></div>
+    <div class="cover-item"><label>בסיס</label><span>שיחת אפיון</span></div>
+    <div class="cover-item"><label>גרסה</label><span>v1.0</span></div>
+    <div class="cover-item"><label>סטטוס</label><span>לאישור</span></div>
+  </div>
+</div>
+
+<!-- ══════════════════════════════════════
+     PART A — INSIGHTS
+══════════════════════════════════════ -->
+<div class="part-div">
+  <h2>חלק א׳ — תובנות עסקיות</h2>
+  <p>מה גילינו בשיחת האפיון — מעבר למה שביקשת לבדוק</p>
+</div>
+
+<!-- SEC 1 — WHERE THE MONEY LEAKS -->
+<div class="sec" id="s1">
+  <div class="sec-hd">
+    <div class="sec-num">1</div>
+    <h2>איפה הכסף נשפך — ניתוח צווארי הבקבוק</h2>
+    <span class="sec-tag">💡 תובנה</span>
+  </div>
+
+  <p class="body">בשיחת האפיון עלו שני מוקדי עלות עיקריים שהאוטומציה יכולה לטפל בהם:</p>
+
+  <div class="pain-grid" style="grid-template-columns:1fr 1fr">
+    <div class="pain-card">
+      <div class="pain-num">~30</div>
+      <div class="pain-label">שעות עבודה בחודש לכותבי דוחות<br><span style="font-size:10px;color:var(--muted)">(הערכה — 0.5 שעה × ~20 תיקים × 3 עובדים)</span></div>
+    </div>
+    <div class="pain-card">
+      <div class="pain-num">💸</div>
+      <div class="pain-label">תשלום לעובדים חיצוניים<br>עבור עבודה שניתנת לאוטומציה</div>
+    </div>
+  </div>
+
+  <div class="insight gold">
+    <div class="insight-title">⭐ הבעיה המרכזית — תשלום לעובדים + תלות בזמינותם</div>
+    כרגע המשרד משלם לכותבי דוחות חיצוניים עבור עבודת הכנה ידנית — קריאת מסמכים, הקלדת נתונים ומילוי טפסים. עבודה זו לוקחת זמן ומייצרת תלות: <strong>החוקר לא יכול לצאת לשטח לפני שכותב הדוח סיים</strong>. האוטומציה מחליפה את שלב זה ומשחררת את שרשרת העבודה.
+  </div>
+
+  <div class="insight blue">
+    <div class="insight-title">ℹ️ תלות בין שלבים</div>
+    הכנת דוחות הבסיס היא צוואר הבקבוק של התהליך — כל שלב לאחריה (תיאום חקירה, יציאה לשטח) תלוי בה. קיצור שלב זה משפר את זמן התגובה של המשרד לכל תיק.
+  </div>
+</div>
+
+<!-- SEC 2 — PROCESS MAP -->
+<div class="sec" id="s2">
+  <div class="sec-hd">
+    <div class="sec-num">2</div>
+    <h2>מיפוי תהליכי העסק — איך המשרד עובד היום</h2>
+    <span class="sec-tag">📋 תיעוד</span>
+  </div>
+
+  <p class="body">התרשים הבא ממפה את מסלול חיי תיק מלא — מהרגע שחברת ביטוח שולחת אותו ועד לתשלום:</p>
+
+  <div class="flow">
+    <div class="fstep">חברת ביטוח<br>שולחת תיק</div>
+    <div class="farrow">←</div>
+    <div class="fstep">מנהלת משרד<br>מושכת מ"כספת"</div>
+    <div class="farrow">←</div>
+    <div class="fstep warn">כותב דוח<br>קורא ומקליד</div>
+    <div class="farrow">←</div>
+    <div class="fstep">מנהלת משרד<br>מתאמת חקירה</div>
+    <div class="farrow">←</div>
+    <div class="fstep">חוקר<br>בשטח</div>
+    <div class="farrow">←</div>
+    <div class="fstep warn">שכתוב<br>דוח</div>
+    <div class="farrow">←</div>
+    <div class="fstep">שליחה +<br>חשבונית</div>
+    <div class="farrow">←</div>
+    <div class="fstep">מעקב<br>תשלום</div>
+  </div>
+
+  <div class="insight blue">
+    <div class="insight-title">שני שלבים מסומנים בכתום — אלו השלבים שהאוטומציה פותרת</div>
+    "כותב דוח קורא ומקליד" + "שכתוב דוח" — שניהם ניתנים לאוטומציה מלאה או חלקית. כל שאר השלבים נשארים כפי שהם.
+  </div>
+
+  <h3 style="margin-top:1.5rem;font-size:1rem;font-weight:700;color:var(--brand)">פירוט השלבים</h3>
+  <table class="t">
+    <thead><tr><th>שלב</th><th>מי</th><th>מה נעשה</th><th>כמה זמן</th></tr></thead>
+    <tbody>
+      <tr><td>קבלת תיק</td><td>מנהלת משרד</td><td>משיכה ממערכת כספת, הענקת מספר תיק, הזנה לטבלת ניהול</td><td>10 דק׳</td></tr>
+      <tr><td><strong>הכנת דוחות בסיס</strong></td><td>כותב דוח</td><td>קריאת כל מסמכי התיק + הקלדת נתונים ל-2 דוחות Word</td><td><strong>30 דק׳</strong></td></tr>
+      <tr><td>תיאום חקירה</td><td>מנהלת משרד</td><td>איתור איש קשר, תיאום פגישה, עדכון יומן Google</td><td>15 דק׳</td></tr>
+      <tr><td>חקירת שטח</td><td>חוקר</td><td>פגישה עם מבוטח + עדים + כתיבת נתונים גולמיים</td><td>משתנה</td></tr>
+      <tr><td><strong>שכתוב דוח</strong></td><td>כותב / הראל</td><td>הפיכת נתונים גולמיים לדוח מנוסח ומלוטש</td><td><strong>20-40 דק׳</strong></td></tr>
+      <tr><td>שליחה + חשבונית</td><td>מנהלת / הראל</td><td>שליחת דוח לחברת ביטוח + חשבונית שכר טרחה</td><td>10 דק׳</td></tr>
+      <tr><td>מעקב תשלום</td><td>עוזרת אישית</td><td>בדיקת חשבון בנק, עדכון טבלת מעקב תשלומים</td><td>5 דק׳</td></tr>
+    </tbody>
+  </table>
+</div>
+
+<!-- SEC 3 — DOCUMENT MAP -->
+<div class="sec" id="s3">
+  <div class="sec-hd">
+    <div class="sec-num">3</div>
+    <h2>מפת המסמכים — מה נכנס ומה יוצא</h2>
+    <span class="sec-tag">📁 תיעוד</span>
+  </div>
+
+  <p class="body"><strong>מסמכי קלט</strong> — מה מגיע מחברת הביטוח:</p>
+
+  <table class="t">
+    <thead><tr><th>מסמך</th><th>פורמט</th><th>תמיד / לפעמים</th><th>המידע הקריטי בו</th></tr></thead>
+    <tbody>
+      <tr><td>פוליסת ביטוח</td><td>PDF</td><td>תמיד</td><td>שם מבוטח, מספר פוליסה, כיסויים, תאריכים</td></tr>
+      <tr><td>כתב תביעה</td><td>JPG / PDF</td><td>לרוב</td><td>שם תובע, ת.ז, נסיבות, נזק נטען, עו״ד</td></tr>
+      <tr><td>הזמנת חקירה</td><td>PDF</td><td>תמיד</td><td>מה לחקור, דגשים, תקציב</td></tr>
+      <tr><td>הודעה לצד ג׳</td><td>PDF</td><td>לפעמים</td><td>גורמים נוספים, נסיבות</td></tr>
+      <tr><td>תופס הודעה</td><td>PDF</td><td>לפעמים</td><td>דיווח ראשוני של המבוטח</td></tr>
+      <tr><td>טופס ב״ל 250</td><td>JPG / PDF</td><td>תאונות עבודה</td><td>פנייה ראשונה לטיפול — גרסה ראשונית</td></tr>
+      <tr><td>טופס ב״ל 211</td><td>JPG / PDF</td><td>תאונות עבודה</td><td>שכר, עדים, תאריך חזרה לעבודה</td></tr>
+      <tr><td>פרוטוקול ועדה רפואית</td><td>PDF</td><td>כשיש נכות</td><td>קביעת נכות, אחוזים, סעיפים</td></tr>
+      <tr><td>תחקיר ממונה בטיחות</td><td>PDF / Word</td><td>חברות גדולות</td><td>ממצאי חקירה פנימית של המעסיק</td></tr>
+      <tr><td>תלושי שכר</td><td>PDF / JPG</td><td>תאונות עבודה</td><td>שכר ברוטו 3 חודשים לפני תאונה</td></tr>
+      <tr><td>מסמכים רפואיים</td><td>PDF / JPG</td><td>לרוב</td><td>גרסה ראשונה לרופא, אבחנות</td></tr>
+      <tr><td>סרטון אירוע</td><td>קישור / קובץ</td><td>לפעמים</td><td>תיעוד חזותי של האירוע</td></tr>
+    </tbody>
+  </table>
+
+  <p class="body" style="margin-top:1.25rem"><strong>מסמכי פלט</strong> — מה המשרד מייצר:</p>
+  <table class="t">
+    <thead><tr><th>מסמך</th><th>מתי נוצר</th><th>מי יוצר</th><th>פורמט</th></tr></thead>
+    <tbody>
+      <tr><td>הזמנת עבודה</td><td>בקבלת תיק</td><td>כותב דוח</td><td>Word — 6 גרסאות (3 סוגים × זכר/נקבה)</td></tr>
+      <tr><td>דוח חקירה בסיס (שטנץ)</td><td>בקבלת תיק</td><td>כותב דוח</td><td>Word — 6 גרסאות</td></tr>
+      <tr><td>דוח חקירה מלא</td><td>אחרי שטח</td><td>כותב / הראל</td><td>Word מנוסח</td></tr>
+      <tr><td>חשבונית שכר טרחה</td><td>עם שליחת דוח</td><td>הראל</td><td>Word / מערכת</td></tr>
+    </tbody>
+  </table>
+
+  <div class="insight warn">
+    <div class="insight-title">⚠️ תובנה — 6 טמפלטים, זיהוי ידני</div>
+    כרגע כותב הדוח מזהה ידנית: (א) סוג תיק, (ב) מין נפגע — ורק אז פותח את הטמפלט הנכון מתוך 6 אפשרויות. זו החלטה שלוקחת זמן ויוצרת טעויות. מערכת אוטומטית יכולה לעשות את זה תמיד נכון.
+  </div>
+</div>
+
+<!-- SEC 4 — HIDDEN INSIGHTS -->
+<div class="sec" id="s4">
+  <div class="sec-hd">
+    <div class="sec-num">4</div>
+    <h2>תובנות שעלו בשיחה — מה לא ביקשת לשמוע</h2>
+    <span class="sec-tag">💡 תובנות</span>
+  </div>
+
+  <div class="insight red">
+    <div class="insight-title">🔴 סיכון — 21 הימים</div>
+    ציינת שיש דד-ליין של 21 יום לתגובה. כרגע המעקב על זה הוא בטבלת Excel ידנית. אם תיק נופל בין הכיסאות — אין התראה אוטומטית. זה סיכון עסקי ומשפטי אמיתי שאפשר לפתור בקלות.
+  </div>
+
+  <div class="insight green">
+    <div class="insight-title">✅ הזדמנות — הנתונים שכבר יש לך</div>
+    טבלת ניהול המשרד + טבלת מעקב תשלומים = מאגר נתונים עשיר על העסק שלך. כמה תיקים לפי חברת ביטוח? מה זמן הטיפול הממוצע? אילו חברות שולחות הכי הרבה תיקים? כרגע הנתונים האלה שם אבל לא מנוצלים. דשבורד פשוט יכול לשנות את זה.
+  </div>
+</div>
+
+<!-- SEC 5 — RECOMMENDATIONS -->
+<div class="sec" id="s5">
+  <div class="sec-hd">
+    <div class="sec-num">5</div>
+    <h2>המלצות — גם בלי אוטומציה מלאה</h2>
+    <span class="sec-tag">🎯 המלצות</span>
+  </div>
+
+  <p class="body">אלו פעולות שאפשר לעשות כבר עכשיו, גם בלי לבנות מערכת אוטומטית:</p>
+
+  <div class="recc">
+    <div class="recc-num">1</div>
+    <div class="recc-body">
+      <h4>יצירת Checklist ברור לכל סוג תיק</h4>
+      <p>רשימה של אילו מסמכים צריכים להיות בתיק מסוג X. מנהלת המשרד בודקת בקבלה. חוסכת זמן לכותב הדוח ומונעת הפתעות בחקירה.</p>
+    </div>
+  </div>
+
+  <div class="recc">
+    <div class="recc-num">2</div>
+    <div class="recc-body">
+      <h4>הוספת עמודת "תאריך 21 יום" לטבלת ניהול</h4>
+      <p>עמודה פשוטה עם נוסחת Excel שמחשבת 21 יום מתאריך קבלת תיק ומשנה צבע לאדום. פתרון של 10 דקות שמונע סיכון משפטי.</p>
+    </div>
+  </div>
+
+  <div class="recc">
+    <div class="recc-num">3</div>
+    <div class="recc-body">
+      <h4>תיעוד לוגיקת "מה לחפש" בכל מסמך</h4>
+      <p>הידע שיש לך על מה לחפש בטופס 211, מה חשוב בפרוטוקול ועדה רפואית וכו׳ — שווה לכתוב אותו כמסמך הדרכה. גם אם לא מבנים אוטומציה, זה מגן על העסק מתלות בעובד ספציפי.</p>
+    </div>
+  </div>
+</div>
+
+<!-- ══════════════════════════════════════
+     PART B — AUTOMATION SPEC
+══════════════════════════════════════ -->
+<div class="part-div" style="background:var(--brand)">
+  <h2>חלק ב׳ — אפיון פתרון האוטומציה</h2>
+  <p>מה בדיוק המערכת תעשה — צעד אחר צעד</p>
+</div>
+
+<!-- SEC 6 — BEFORE / AFTER -->
+<div class="sec" id="s6">
+  <div class="sec-hd">
+    <div class="sec-num">6</div>
+    <h2>לפני ואחרי — מה משתנה</h2>
+  </div>
+
+  <div class="ba-grid">
+    <div class="ba-card before">
+      <h4>❌ היום</h4>
+      <ul class="clean">
+        <li>כותב דוח קורא 3-5 קבצים ידנית</li>
+        <li>מזהה לבד סוג תיק ומין נפגע</li>
+        <li>פותח טמפלט ידנית מתוך 6 אפשרויות</li>
+        <li>מקליד נתונים שכבר קיימים במסמך</li>
+        <li>~30 דקות לתיק × 20 תיקים = 10 שעות</li>
+        <li>תלוי בזמינות כותב הדוח</li>
+      </ul>
+    </div>
+    <div class="ba-card after">
+      <h4>✅ אחרי האוטומציה</h4>
+      <ul class="clean">
+        <li>מעלים קבצים לתיקייה, לוחצים כפתור</li>
+        <li>המערכת מזהה סוג תיק ומין נפגע</li>
+        <li>טמפלט נפתח אוטומטית</li>
+        <li>כל הנתונים מדולים ומוכנסים</li>
+        <li>~2 דקות המתנה לתיק</li>
+        <li>זמין 24/7, ללא תלות באדם</li>
+      </ul>
+    </div>
+  </div>
+</div>
+
+<!-- SEC 7 — HOW IT WORKS -->
+<div class="sec" id="s7">
+  <div class="sec-hd">
+    <div class="sec-num">7</div>
+    <h2>איך המערכת עובדת — שלב אחר שלב</h2>
+  </div>
+
+  <div class="flow" style="margin-bottom:1.5rem">
+    <div class="fstep new">העלאת<br>קבצים</div>
+    <div class="farrow">←</div>
+    <div class="fstep new">לחיצת<br>כפתור</div>
+    <div class="farrow">←</div>
+    <div class="fstep new">קריאת<br>קבצים</div>
+    <div class="farrow">←</div>
+    <div class="fstep new">AI שולף<br>נתונים</div>
+    <div class="farrow">←</div>
+    <div class="fstep new">מילוי<br>דוחות</div>
+    <div class="farrow">←</div>
+    <div class="fstep new">שמירה<br>ב-Drive</div>
+  </div>
+
+  <ol class="steps">
+    <li>
+      <div class="step-content">
+        <h4>הכנה — מנהלת המשרד</h4>
+        <p>מעלה את כל קבצי התיק לתיקייה ייעודית ב-Google Drive (שם התיקייה = מספר תיק). ללא שינוי בשגרת העבודה הנוכחית.</p>
+      </div>
+    </li>
+    <li>
+      <div class="step-content">
+        <h4>הפעלה — Google Sheets</h4>
+        <p>מנהלת המשרד פותחת גיליון Google Sheets, כותבת מספר תיק ולוחצת "עבד תיק". זה כל מה שצריך לעשות.</p>
+      </div>
+    </li>
+    <li>
+      <div class="step-content">
+        <h4>קריאת קבצים — Make.com</h4>
+        <p>המערכת מאתרת את תיקיית התיק, עוברת על כל קובץ ומחלצת טקסט. PDF רגיל — חילוץ ישיר. JPG / PDF סרוק — OCR (זיהוי תווים אוטומטי). Word — קריאה ישירה.</p>
+      </div>
+    </li>
+    <li>
+      <div class="step-content">
+        <h4>זיהוי וסיווג — בינה מלאכותית</h4>
+        <p>כל הטקסטים נשלחים לבינה המלאכותית שמחליטה: מה סוג התיק? (עובד / צד ג׳ / מחלת מקצוע) מה מין הנפגע? אילו מסמכים קיימים ואילו חסרים? האם יש גרסאות סותרות בין המסמכים?</p>
+      </div>
+    </li>
+    <li>
+      <div class="step-content">
+        <h4>שליפת נתונים — בינה מלאכותית</h4>
+        <p>ה-AI שולף את כל הנתונים הנדרשים: פרטי נפגע, נסיבות, שכר, עדים, קביעות נכות, תאריכים, גרסאות רפואיות ראשונות — ומחזיר רשימה מסודרת.</p>
+      </div>
+    </li>
+    <li>
+      <div class="step-content">
+        <h4>מילוי דוחות — Google Docs</h4>
+        <p>המערכת פותחת את הטמפלט הנכון (לפי סוג + מין) וממלאת כל שדה אוטומטית. שדות ללא מידע — מסומנים "לא צורף" או "לא נמצא".</p>
+      </div>
+    </li>
+    <li>
+      <div class="step-content">
+        <h4>שמירה — Google Drive</h4>
+        <p>שני הדוחות המוכנים נשמרים בתיקיית התיק ב-Drive. מנהלת המשרד מקבלת הודעה שהדוחות מוכנים.</p>
+      </div>
+    </li>
+  </ol>
+</div>
+
+<!-- SEC 8 — WHAT AI EXTRACTS -->
+<div class="sec" id="s8">
+  <div class="sec-hd">
+    <div class="sec-num">8</div>
+    <h2>מה ה-AI שולף — רשימת שדות</h2>
+  </div>
+
+  <p class="body">אלו כל הנתונים שהמערכת מחלצת מהמסמכים ושותלת בדוחות:</p>
+
+  <h3 style="margin:.75rem 0 .5rem;font-size:.95rem;color:var(--brand)">פרטי תיק</h3>
+  <div class="field-grid">
+    <div class="field-item"><div class="field-name">מספר פוליסה</div><div class="field-src">מקור: פוליסה</div></div>
+    <div class="field-item"><div class="field-name">שם חברת ביטוח</div><div class="field-src">מקור: פוליסה / הזמנת חקירה</div></div>
+    <div class="field-item"><div class="field-name">תאריך אירוע</div><div class="field-src">מקור: כתב תביעה</div></div>
+    <div class="field-item"><div class="field-name">סוג חקירה</div><div class="field-src">מקור: זיהוי AI מכלל המסמכים</div></div>
+    <div class="field-item"><div class="field-name">סוג פתיחה</div><div class="field-src">מקור: הזמנת חקירה</div></div>
+    <div class="field-item"><div class="field-name">דגשי חקירה</div><div class="field-src">מקור: הזמנת חקירה</div></div>
+  </div>
+
+  <h3 style="margin:.75rem 0 .5rem;font-size:.95rem;color:var(--brand)">פרטי מבוטח</h3>
+  <div class="field-grid">
+    <div class="field-item"><div class="field-name">שם מבוטח</div><div class="field-src">מקור: פוליסה</div></div>
+    <div class="field-item"><div class="field-name">כתובת מבוטח</div><div class="field-src">מקור: פוליסה</div></div>
+    <div class="field-item"><div class="field-name">סוג עסק</div><div class="field-src">מקור: פוליסה / תביעה</div></div>
+    <div class="field-item"><div class="field-name">קשר לתביעה</div><div class="field-src">מקור: כתב תביעה</div></div>
+  </div>
+
+  <h3 style="margin:.75rem 0 .5rem;font-size:.95rem;color:var(--brand)">פרטי נפגע</h3>
+  <div class="field-grid">
+    <div class="field-item"><div class="field-name">שם + משפחה</div><div class="field-src">מקור: כתב תביעה</div></div>
+    <div class="field-item"><div class="field-name">תעודת זהות</div><div class="field-src">מקור: כתב תביעה</div></div>
+    <div class="field-item"><div class="field-name">שנת לידה</div><div class="field-src">מקור: כתב תביעה / ת.ז</div></div>
+    <div class="field-item"><div class="field-name">שם אב</div><div class="field-src">מקור: כתב תביעה (לערבים / קטינים)</div></div>
+    <div class="field-item"><div class="field-name">טלפון</div><div class="field-src">מקור: כתב תביעה</div></div>
+    <div class="field-item"><div class="field-name">כתובת</div><div class="field-src">מקור: כתב תביעה</div></div>
+    <div class="field-item"><div class="field-name">מין</div><div class="field-src">מקור: זיהוי AI</div></div>
+    <div class="field-item"><div class="field-name">עיסוק</div><div class="field-src">מקור: כתב תביעה / 211</div></div>
+  </div>
+
+  <h3 style="margin:.75rem 0 .5rem;font-size:.95rem;color:var(--brand)">נתוני נזק</h3>
+  <div class="field-grid">
+    <div class="field-item"><div class="field-name">שכר ברוטו</div><div class="field-src">מקור: ב״ל 211 / תלושי שכר</div></div>
+    <div class="field-item"><div class="field-name">ימי היעדרות</div><div class="field-src">מקור: ב״ל 211</div></div>
+    <div class="field-item"><div class="field-name">תאריך חזרה לעבודה</div><div class="field-src">מקור: ב״ל 211</div></div>
+    <div class="field-item"><div class="field-name">פגיעות עיקריות</div><div class="field-src">מקור: מסמכים רפואיים</div></div>
+    <div class="field-item"><div class="field-name">קביעת נכות ב״ל</div><div class="field-src">מקור: פרוטוקול ועדה רפואית</div></div>
+    <div class="field-item"><div class="field-name">טיפול בבית חולים</div><div class="field-src">מקור: מסמכים רפואיים</div></div>
+  </div>
+
+  <h3 style="margin:.75rem 0 .5rem;font-size:.95rem;color:var(--brand)">ניתוח מסמכים</h3>
+  <div class="field-grid">
+    <div class="field-item"><div class="field-name">גרסה רפואית ראשונה</div><div class="field-src">מקור: מסמך הכי מוקדם</div></div>
+    <div class="field-item"><div class="field-name">גרסה שנייה</div><div class="field-src">מקור: מסמך שני בתאריך</div></div>
+    <div class="field-item"><div class="field-name">מה כתוב בטופס 250</div><div class="field-src">מקור: ב״ל 250</div></div>
+    <div class="field-item"><div class="field-name">עדים + טלפונים</div><div class="field-src">מקור: ב״ל 211</div></div>
+    <div class="field-item"><div class="field-name">גורמים מעורבים</div><div class="field-src">מקור: הודעה לצד ג׳</div></div>
+    <div class="field-item"><div class="field-name">האם יש סרטון</div><div class="field-src">זיהוי לפי סיומת קובץ בתיקייה</div></div>
+    <div class="field-item"><div class="field-name">שם קובץ הסרטון</div><div class="field-src">מוצג בדוח לטיפול ידני</div></div>
+  </div>
+
+  <div class="insight warn" style="margin-top:1rem">
+    <div class="insight-title">🎥 סרטון — זיהוי בלבד, ניתוח ידני</div>
+    המערכת מזהה אוטומטית אם קיים קובץ סרטון בתיקייה (.mp4, .mov, .avi) ומציינת זאת בדוח. <strong>ניתוח תוכן הסרטון נשאר ידני</strong> — נדרשת עין אנושית לניתוח תאונות.<br><br>
+    שדרוג עתידי אפשרי: ניתוח אוטומטי של תוכן הסרטון דרך שירות AI ייעודי (Twelve Labs / Google Video Intelligence). לא כלול בפרויקט הנוכחי.
+  </div>
+
+  <div class="insight blue" style="margin-top:1rem">
+    <div class="insight-title">מסמכים חסרים — המערכת תמיד מציינת</div>
+    לכל שדה שלא נמצא מידע — המערכת כותבת "לא צורף" או "לא נמצא במסמכים". כך החוקר תמיד יודע בדיוק מה חסר לפני שהוא יוצא לשטח.
+  </div>
+</div>
+
+<!-- SEC 9 — PACKAGES -->
+<div class="sec" id="s9">
+  <div class="sec-hd">
+    <div class="sec-num">9</div>
+    <h2>חבילות — מה כולל כל אחת</h2>
+  </div>
+
+  <table class="t">
+    <thead><tr><th>יכולת</th><th>חבילה א׳ — 6,000 ₪</th><th>חבילה ב׳ — 7,500 ₪</th></tr></thead>
+    <tbody>
+      <tr><td>קריאת כל סוגי הקבצים</td><td>✅</td><td>✅</td></tr>
+      <tr><td>זיהוי סוג תיק אוטומטי</td><td>✅</td><td>✅</td></tr>
+      <tr><td>זיהוי מין נפגע</td><td>✅</td><td>✅</td></tr>
+      <tr><td>מילוי הזמנת עבודה</td><td>✅</td><td>✅</td></tr>
+      <tr><td>מילוי דוח חקירה בסיס</td><td>✅</td><td>✅</td></tr>
+      <tr><td>סימון מסמכים חסרים</td><td>✅</td><td>✅</td></tr>
+      <tr><td>זיהוי קיום סרטון בתיקייה</td><td>✅</td><td>✅</td></tr>
+      <tr><td>שמירה אוטומטית ב-Drive</td><td>✅</td><td>✅</td></tr>
+      <tr><td>שכתוב דוח חקירה גולמי</td><td>❌</td><td>✅</td></tr>
+      <tr><td>ניתוח תוכן סרטון אוטומטי</td><td>❌</td><td>❌ שדרוג עתידי</td></tr>
+    </tbody>
+  </table>
+
+  <div class="insight green" style="margin-top:1rem">
+    <div class="insight-title">✅ החזר השקעה — חבילה א׳</div>
+    30 שעות חיסכון × ~65 ₪ לשעה (עלות עובד) = ~2,000 ₪ לחודש. ההשקעה מחזירה את עצמה תוך פחות מ-3 חודשים.
+  </div>
+
+  <div class="insight warn" style="margin-top:1rem">
+    <div class="insight-title">⚙️ חשוב להבין — זו מערכת לומדת</div>
+    <p style="margin:0;font-size:14px;line-height:1.8">המערכת מבוססת על בינה מלאכותית ו<strong>משתפרת ככל שמעבדים יותר תיקים</strong>. כמו כל עובד חדש — בשבועות הראשונים תהיה תקופת הרצה שבה:</p>
+    <ul style="margin:.5rem 0 0 0;padding-right:1.25rem;font-size:14px;line-height:1.8">
+      <li>ייתכנו שגיאות בזיהוי שדות או סיווג סוג תיק</li>
+      <li>חלק מהשדות יידרשו תיקון ידני בתיקים הראשונים</li>
+      <li>ככל שמזינים יותר תיקים — המערכת לומדת ומשתפרת</li>
+    </ul>
+    <p style="margin:.75rem 0 0 0;font-size:14px"><strong>לכן מומלץ:</strong> בחודש הראשון לבדוק כל פלט ולאשר לפני שימוש, ולעדכר אותי על כל שגיאה חוזרת — כדי לכוון את המערכת לתיקים הספציפיים של המשרד.</p>
+  </div>
+</div>
+
+<!-- SEC 10 — OPEN QUESTIONS -->
+<div class="sec" id="s10">
+  <div class="sec-hd">
+    <div class="sec-num">10</div>
+    <h2>שאלות פתוחות — לפני תחילת עבודה</h2>
+  </div>
+
+  <p class="body">אלו הנקודות שנותרו פתוחות מהשיחה ויש לאשרן לפני שמתחילים:</p>
+
+  <table class="t">
+    <thead><tr><th>#</th><th>שאלה</th><th>למה זה משפיע</th></tr></thead>
+    <tbody>
+      <tr><td>1</td><td>כמה תיקים בממוצע בחודש?</td><td>משפיע על בחירת תוכנית Make.com</td></tr>
+      <tr><td>2</td><td>האם יש תיקים שמגיעים במייל ולא רק דרך כספת?</td><td>ייתכן שנדרש חיבור נוסף</td></tr>
+      <tr><td>3</td><td>האם הדוח הגולמי (חבילה ב׳) נכתב ב-Word או בכתב יד?</td><td>קובע אם שכתוב אוטומטי אפשרי</td></tr>
+      <tr><td>4</td><td>האם הטמפלטים זמינים לשיתוף לצורך בדיקה?</td><td>נדרש לפני בניית הפתרון</td></tr>
+    </tbody>
+  </table>
+</div>
+
+<div class="footer">
+  <strong>AP Automations</strong> | office@apauto.co.il<br>
+  <span>מסמך זה הוכן על בסיס שיחת אפיון ומשקף את הבנת הצרכים. כל שינוי בדרישות לאחר אישור המסמך עשוי להשפיע על היקף ועלות הפרויקט.</span>
+</div>
+
+</div>
+<script>document.getElementById('dt').textContent=new Date().toLocaleDateString('he-IL')</script>
+</body>
+</html>
